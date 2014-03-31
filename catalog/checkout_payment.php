@@ -35,6 +35,9 @@
     }
   }
 
+// if we have been here before and are coming back get rid of the credit covers variable
+  if(tep_session_is_registered('credit_covers')) tep_session_unregister('credit_covers');  //CCGV  
+
 // Stock Check
   if ( (STOCK_CHECK == 'true') && (STOCK_ALLOW_CHECKOUT != 'true') ) {
     $products = $cart->get_products();
@@ -66,6 +69,9 @@
   require(DIR_WS_CLASSES . 'order.php');
   $order = new order;
 
+  require(DIR_WS_CLASSES . 'order_total.php'); // CCGV
+  $order_total_modules = new order_total; // CCGV
+
   if (!tep_session_is_registered('comments')) tep_session_register('comments');
   if (isset($HTTP_POST_VARS['comments']) && tep_not_null($HTTP_POST_VARS['comments'])) {
     $comments = tep_db_prepare_input($HTTP_POST_VARS['comments']);
@@ -73,6 +79,7 @@
 
   $total_weight = $cart->show_weight();
   $total_count = $cart->count_contents();
+  $total_count = $cart->count_contents_virtual(); // CCGV 
 
 // load all enabled payment modules
   require(DIR_WS_CLASSES . 'payment.php');
@@ -86,8 +93,14 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 
-<script type="text/javascript"><!--
+<script language="javascript"><!--
 var selected;
+<?php /* following jscript function ADDED FOR CCGV */ ?>
+var submitter = null;
+function submitFunction() {
+   submitter = 1;
+   }
+<?php /* END OF ADDED FOR CCGV */ ?>
 
 function selectRowEffect(object, buttonSelect) {
   if (!selected) {
@@ -257,6 +270,9 @@ function rowOutEffect(object) {
   }
 ?>
 
+<?php
+  echo $order_total_modules->credit_selection(); // CCGV
+?>
   </div>
 
   <h2><?php echo TABLE_HEADING_COMMENTS; ?></h2>

@@ -277,4 +277,5 @@ define('TEXT_PASSWORD_FORGOTTEN', 'Password Lupa Password? Klik di sini.');
 define('MODULE_BOXES_NEWSLETTER_TEXT', 'Sign up newsletter kami');
 define('BOX_NEWSLETTER_TEXT', 'berlangganan');
  define('MODULE_BOXES_INFORMATION_BOX_SITEMAP', 'peta Situs');
+ require(DIR_WS_LANGUAGES . 'add_ccgvdc_english.php');  // CCGV
 ?>

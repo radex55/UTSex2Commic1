@@ -28,4 +28,10 @@ define('MY_ORDERS_VIEW', 'View the orders I have made.');
 define('EMAIL_NOTIFICATIONS_TITLE', 'E-Mail Notifications');
 define('EMAIL_NOTIFICATIONS_NEWSLETTERS', 'Subscribe or unsubscribe from newsletters.');
 define('EMAIL_NOTIFICATIONS_PRODUCTS', 'View or change my product notification list.');
+// CCGV
+define('GIFT_VOUCHER_COUPON', 'Gift Voucher/Coupon:');
+define('CCGV_BALANCE', '<FONT COLOR="#ff0000">Gift Voucher Balance:</FONT> ');
+define('CCGV_SENDVOUCHER', 'Send Gift Voucher.');
+define('CCGV_FAQ', 'Gift Voucher FAQ.');
+// CCGV
 ?>

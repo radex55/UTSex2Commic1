@@ -43,6 +43,7 @@
 
 // load selected payment module
   require(DIR_WS_CLASSES . 'payment.php');
+  if ($credit_covers) $payment=''; // CCGV  
   $payment_modules = new payment($payment);
 
 // load the selected shipping module
@@ -51,6 +52,9 @@
 
   require(DIR_WS_CLASSES . 'order.php');
   $order = new order;
+
+// load the before_process function from the payment modules
+  $payment_modules->before_process();  
 
 // Stock Check
   $any_out_of_stock = false;
@@ -77,8 +81,6 @@
 
   $order_totals = $order_total_modules->process();
 
-// load the before_process function from the payment modules
-  $payment_modules->before_process();
 
   $sql_data_array = array('customers_id' => $customer_id,
                           'customers_name' => $order->customer['firstname'] . ' ' . $order->customer['lastname'],
@@ -141,6 +143,8 @@
 
 // initialized for the email confirmation
   $products_ordered = '';
+  $subtotal = 0; //CCGV
+  $total_tax = 0; // CCGV
 
   for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
 // Stock Update - Joao Correia
@@ -191,6 +195,7 @@
                             'products_quantity' => $order->products[$i]['qty']);
     tep_db_perform(TABLE_ORDERS_PRODUCTS, $sql_data_array);
     $order_products_id = tep_db_insert_id();
+    $order_total_modules->update_credit_account($i);// CCGV    
 
 //------insert customer choosen option to order--------
     $attributes_exist = '0';
@@ -236,8 +241,17 @@
       }
     }
 //------insert customer choosen option eof ----
+
+    //ADDED FOR CCGV
+    $total_weight += ($order->products[$i]['qty'] * $order->products[$i]['weight']);
+    $total_tax += tep_calculate_tax($total_products_price, $products_tax) * $order->products[$i]['qty'];
+    $total_cost += $total_products_price;
+    // EOF
+
     $products_ordered .= $order->products[$i]['qty'] . ' x ' . $order->products[$i]['name'] . ' (' . $order->products[$i]['model'] . ') = ' . $currencies->display_price($order->products[$i]['final_price'], $order->products[$i]['tax'], $order->products[$i]['qty']) . $products_ordered_attributes . "\n";
   }
+
+$order_total_modules->apply_credit(); // CCGV
 
 // lets start with the email confirmation
   $email_order = STORE_NAME . "\n" . 
@@ -293,6 +307,8 @@
   tep_session_unregister('shipping');
   tep_session_unregister('payment');
   tep_session_unregister('comments');
+  if(tep_session_is_registered('credit_covers')) tep_session_unregister('credit_covers');// CCGV
+  $order_total_modules->clear_posts();// CCGV  
 
   tep_redirect(tep_href_link(FILENAME_CHECKOUT_SUCCESS, '', 'SSL'));
 

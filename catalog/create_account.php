@@ -246,6 +246,35 @@
       }
 
       $email_text .= EMAIL_WELCOME . EMAIL_TEXT . EMAIL_CONTACT . EMAIL_WARNING;
+// CCGV CODE BLOCK ADDED  ******************************************************* BEGIN
+  if (NEW_SIGNUP_GIFT_VOUCHER_AMOUNT > 0) {
+    $coupon_code = create_coupon_code();
+    $insert_query = tep_db_query("insert into " . TABLE_COUPONS . " (coupon_code, coupon_type, coupon_amount, date_created) values ('" . $coupon_code . "', 'G', '" . NEW_SIGNUP_GIFT_VOUCHER_AMOUNT . "', now())");
+    $insert_id = tep_db_insert_id($insert_query);
+    $insert_query = tep_db_query("insert into " . TABLE_COUPON_EMAIL_TRACK . " (coupon_id, customer_id_sent, sent_firstname, emailed_to, date_sent) values ('" . $insert_id ."', '0', 'Admin', '" . $email_address . "', now() )");
+
+    $email_text .= sprintf(EMAIL_GV_INCENTIVE_HEADER, $currencies->format(NEW_SIGNUP_GIFT_VOUCHER_AMOUNT)) . "\n\n" .
+                   sprintf(EMAIL_GV_REDEEM, $coupon_code) . "\n\n" .
+                   EMAIL_GV_LINK . tep_href_link(FILENAME_GV_REDEEM, 'gv_no=' . $coupon_code,'NONSSL', false) .
+                   "\n\n";
+  }
+  if (NEW_SIGNUP_DISCOUNT_COUPON != '') {
+    $coupon_code = NEW_SIGNUP_DISCOUNT_COUPON;
+    $coupon_query = tep_db_query("select * from " . TABLE_COUPONS . " where coupon_code = '" . $coupon_code . "'");
+    $coupon = tep_db_fetch_array($coupon_query);
+    $coupon_id = $coupon['coupon_id'];    
+    $coupon_desc_query = tep_db_query("select * from " . TABLE_COUPONS_DESCRIPTION . " where coupon_id = '" . $coupon_id . "' and language_id = '" . (int)$languages_id . "'");
+    $coupon_desc = tep_db_fetch_array($coupon_desc_query);
+    $insert_query = tep_db_query("insert into " . TABLE_COUPON_EMAIL_TRACK . " (coupon_id, customer_id_sent, sent_firstname, emailed_to, date_sent) values ('" . $coupon_id ."', '0', 'Admin', '" . $email_address . "', now() )");
+    $email_text .= EMAIL_COUPON_INCENTIVE_HEADER .  "\n" .
+                   sprintf("%s", $coupon_desc['coupon_description']) ."\n\n" .
+                   sprintf(EMAIL_COUPON_REDEEM, $coupon['coupon_code']) . "\n\n" .
+                   "\n\n";
+
+
+
+  }
+// CCGV CODE BLOCK ADDED  ******************************************************* END      
       tep_mail($name, $email_address, EMAIL_SUBJECT, $email_text, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
 
       tep_redirect(tep_href_link(FILENAME_CREATE_ACCOUNT_SUCCESS, '', 'SSL'));

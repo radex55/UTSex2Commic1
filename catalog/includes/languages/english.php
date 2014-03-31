@@ -277,4 +277,5 @@ define('TEXT_PASSWORD_FORGOTTEN', 'Password forgotten? Click here.');
 define('MODULE_BOXES_NEWSLETTER_TEXT', 'Sign up for our newsletter');
 define('BOX_NEWSLETTER_TEXT', 'Subscribe');
  define('MODULE_BOXES_INFORMATION_BOX_SITEMAP', 'Sitemap');
+ require(DIR_WS_LANGUAGES . 'add_ccgvdc_english.php');  // CCGV
 ?>

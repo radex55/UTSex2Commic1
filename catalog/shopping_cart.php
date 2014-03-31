@@ -134,26 +134,6 @@
     <span class="buttonAction"><?php echo tep_draw_button(IMAGE_BUTTON_CHECKOUT, 'triangle-1-e', tep_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'), 'primary'); ?></span>
   </div>
 
-<?php
-    $initialize_checkout_methods = $payment_modules->checkout_initialization_method();
-
-    if (!empty($initialize_checkout_methods)) {
-?>
-
-  <p align="right" style="clear: both; padding: 15px 50px 0 0;"><?php echo TEXT_ALTERNATIVE_CHECKOUT_METHODS; ?></p>
-
-<?php
-      reset($initialize_checkout_methods);
-      while (list(, $value) = each($initialize_checkout_methods)) {
-?>
-
-  <p align="right"><?php echo $value; ?></p>
-
-<?php
-      }
-    }
-?>
-
 </div>
 
 </form>

@@ -101,11 +101,13 @@
           }
         }
 
-        $js .= "\n" . '  if (payment_value == null) {' . "\n" .
+        //$js .= "\n" . '  if (payment_value == null) {' . "\n" .
+          $js .= "\n" . '  if (payment_value == null && submitter != 1) {' . "\n" . // This line edited for CCGV
                '    error_message = error_message + "' . JS_ERROR_NO_PAYMENT_MODULE_SELECTED . '";' . "\n" .
                '    error = 1;' . "\n" .
                '  }' . "\n\n" .
-               '  if (error == 1) {' . "\n" .
+               //'  if (error == 1) {' . "\n" .
+               '  if (error == 1 && submitter != 1) {' . "\n" . // This line edited for CCGV
                '    alert(error_message);' . "\n" .
                '    return false;' . "\n" .
                '  } else {' . "\n" .
@@ -118,21 +120,21 @@
       return $js;
     }
 
-    function checkout_initialization_method() {
-      $initialize_array = array();
+    // function checkout_initialization_method() {
+    //   $initialize_array = array();
 
-      if (is_array($this->modules)) {
-        reset($this->modules);
-        while (list(, $value) = each($this->modules)) {
-          $class = substr($value, 0, strrpos($value, '.'));
-          if ($GLOBALS[$class]->enabled && method_exists($GLOBALS[$class], 'checkout_initialization_method')) {
-            $initialize_array[] = $GLOBALS[$class]->checkout_initialization_method();
-          }
-        }
-      }
+    //   if (is_array($this->modules)) {
+    //     reset($this->modules);
+    //     while (list(, $value) = each($this->modules)) {
+    //       $class = substr($value, 0, strrpos($value, '.'));
+    //       if ($GLOBALS[$class]->enabled && method_exists($GLOBALS[$class], 'checkout_initialization_method')) {
+    //         $initialize_array[] = $GLOBALS[$class]->checkout_initialization_method();
+    //       }
+    //     }
+    //   }
 
-      return $initialize_array;
-    }
+    //   return $initialize_array;
+    // }
 
     function selection() {
       $selection_array = array();
@@ -151,13 +153,30 @@
       return $selection_array;
     }
 
+//ADDED FOR CCGV
+ // check credit covers was setup to test whether credit covers is set in other parts of the code
+function check_credit_covers() {
+  global $credit_covers;
+
+  return $credit_covers;
+}
+// END ADDED FOR CCGV
     function pre_confirmation_check() {
+  global $credit_covers, $payment_modules; // CCGV
       if (is_array($this->modules)) {
         if (is_object($GLOBALS[$this->selected_module]) && ($GLOBALS[$this->selected_module]->enabled) ) {
+// ADDED FOR CCGV
+      if ($credit_covers) {
+            $GLOBALS[$this->selected_module]->enabled = false;
+            $GLOBALS[$this->selected_module] = NULL;
+            $payment_modules = '';
+          } else {
+// END ADDED FOR CCGV
           $GLOBALS[$this->selected_module]->pre_confirmation_check();
         }
       }
     }
+} // CCGV
 
     function confirmation() {
       if (is_array($this->modules)) {

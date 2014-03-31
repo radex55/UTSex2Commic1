@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>CCGV(trad) User Guide</title>
+<style type="text/css" media="screen">
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, Arial, sans-serif;
+  	color: rgb(0,0,0);
+	font-size: small;
+	color: #333;
+	text-align: center;
+	background: rgb(123,115,115);
+	}
+#container {
+	width: 760px;
+	margin: 0 auto;
+	padding: 30px;
+	font-size: small;
+	text-align: left;
+	background: white;
+	}
+h1 {
+	font-size: 150%;
+	font-weight: bold;
+	margin: 0 0 1em 0;
+	padding: 0;
+	}
+h2 {
+	font-size: 130%;
+	font-weight: bold;
+	margin: 1.2em 0 0.4em 0;
+	padding: 0;
+	}
+h3 {
+	font-size: 100%;
+	font-weight: bold;
+	margin: 0.8em 0 0 0;
+	padding: 0;
+	}
+p {
+	padding: 0;
+	margin: 0.2em 0 0.5em 0;
+	}
+ul, ol {
+	margin: 0.2em 0 0.5em 0;
+}
+ol li { margin: 0 0 0.5em 0; }
+.thanks {
+	font-size: 130%;
+	font-weight: bold;
+	color: rgb(123,115,115);
+	margin: 30px 0px 0px 0px;
+	padding: 0px;
+}
+
+table {
+	border-collapse: collapse;
+	 border: 1px solid rgb(123,115,115);
+	 margin: 0.2em 0 0.5em 0; }
+td {  border-bottom: 1px solid rgb(123,115,115); }
+#configuration th { background: rgb(123,115,115); color: white; }
+#configuration col#desc {width: 40%;}
+
+
+/* adjustment for IE5 */
+
+body {
+	font-size: x-small; /* IE5 Win */
+  	voice-family: "\"}\"";
+  	voice-family: inherit;
+  	font-size: small;
+	}
+html>body { /* be nice to Opera */
+	font-size: small;
+	}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+
+<!-- TEXT STARTS HERE /-->
+
+<h1>Gift Vouchers &amp; Discount Coupons Guidelines</h1>
+
+<h2>Changes sort order before using CCGV(trad)</h2>
+<p> In your osCommerce admin panel, under Modules --> Order Total, change the Sort Order as follows:
+<ul>
+<li>Discount Coupons = 3 | Include Shipping = True | Include Tax = True | Recalculate Tax = Standard</li>
+<li>Gift Vouchers = 5</li> | Include Shipping = False | Include Tax = True | Recalculate Tax = None
+<li>Shipping = 2</li>
+<li>Sub Total = 1</li>
+<li>Tax = 4</li>
+<li>Total = 6</li>
+</ul></p>
+<h2>Creating a Gift Voucher</h2>
+<p>Creating a gift voucher for a customer to buy is the same as creating a new product with the exception that the gift vouchers Model Number must start with the word GIFT in upper case. It can be GIFT_25 or GIFT25 or whatever you would like to use, as long as it starts with the word GIFT. You can create gift vouchers in any denomination. Gift certificate images have been provide in the catalog\images directory in denominations of £5, £10, £20, £50 and £X (sample).</p>
+<p>You can also create gift vouchers by sending them to your customers via the admin-&gt;Vouchers/Coupons-&gt;Mail Gift Voucher selection within the admin. To use this to send a voucher to a customer use the drop down customer list. To send to a single customer or future customer you can put their email in the Email To: text box. Do not use both the customer dropdown list and the Email To: text box or the customer will get 2 gift vouchers.</p>
+
+<h2>Gift Vouchers Queuing</h2>
+<p>To prevent fraud, all gift vouchers are queued in your admin panel. When selling gift vouchers, always check that payment has been made before releasing the gift voucher to the customer. Customers will be notified by email once a gift voucher has been released. Only after release can a gift voucher be used.</p>
+
+<h2>Gift Vouchers & Shipping</h2>
+<p>Gift vouchers are a virtual product. In this regard they do not require shipping charges to be added to them. To avoid the shipping charge on gift vouchers set the weight of the gift voucher to 0 when creating the product and enable downloads by setting to True the value in admin-&gt;configuration-&gt;downloads-&gt;enable download.</p>
+<p><strong>BE AWARE!</strong> Once Enable Downloads is set to True all of your non-virtual products MUST have a weight attached to them in osC&nbsp; Admin --&gt; Catalog.&nbsp; If you don't do this then EVERYONE will get Free Shipping on all items in your store!</p>
+<p>If you have already added a large number of non-virtual products to your store and not given them a weight then you can do so quite easily by accessing your database via phpMyAdmin, clicking on the SQL tab, and running the following sql query in the query box:</p>
+<p>UPDATE products SET products_weight='1.00';</p>
+<p>This will give all products a weight of 1.&nbsp; If you already added Gift Vouchers as products then you'll need to go back to them and reset their weight to zero.</p>
+
+<h2>Creating Discount Coupons:</h2>
+<p>Creating a discount coupon is done through the admin-&gt;Vouchers/Coupons-&gt;Coupon Admin This selection allows you to create/insert, edit, email and delete a coupon. Coupons can be created in fixed or percentage amounts, for a single product, multiple products, a single category, multiple categories or the complete inventory.</p>
+
+<h2>Enabling Gift Vouchers and Discount Coupons</h2>
+<p>To enable the Gift Voucher, go to your admin-&gt;modules-&gt;order_total-&gt;Gift Vouchers and choose to install it. On a default system there should be a button with a green cross and the word 'Install'. Click that.&nbsp;</p>
+<p>To enable the Discount Coupon, go to your admin-&gt;modules-&gt;order_total-&gt;Discount Coupons and choose to install it. On a default system there should be a button with a green cross and the word 'Install'. Click that.</p>
+<p><strong>In this version of CCGV these are pre-enabled</strong>, but you can use this same feature to disable these functions if you do not require them.  If you amend the Sort Order (shown above) please note that Discount Coupons must come before Gift Vouchers in the sort order.</p>
+
+
+
+<h2>Welcome Gift Voucher and Discount Coupon</h2>
+<p>The default value of the new customer gift voucher and discount coupon are set so that no value or notification is sent in the welcome email.</p>
+<p>To send a welcome gift voucher to new customers go to <em>Configuration -> My Store</em> and enter an amount into the <em>Welcome Gif Voucher Amount</em> field. If you do not want to send a welcome gift voucher, enter 0. Welcome gift vouchers are sent as part of the welcome email.</p>
+<p>To send a welcome discount coupon, first create a discount coupon, then go to <em>Configuration -> My Store</em> and enter the discount coupon code into the <em>Welcome Discount Coupon Code</em> field. If you do not wish to send a welcome discount coupon, leave empty. Welcome discount coupons are sent as part of the welcome email. NB: the coupon description is included in the email.</p>
+
+<h2>Explanations of Taxation and Discount Coupons</h2>
+<p><ul><li>If no Discount is applied to Shipping then Tax is calculated on the Sub Total minus the Discount</li>
+<li>If you want to charge Tax on Shipping then you have to enable it - and use Net Prices in Shipping</li>
+</ul></p>
+<p><strong>Some examples</strong></p>
+<p><u>If Discount Coupon is percentage based</u></p>
+<p>If the Sub Total is 14.9 and the Discount is 10% then the discount is 1.49</p>
+The total is calculated like this, assuming the Tax is at 17.5% on the Sub Total minus the Discount Coupon</p>
+<ul><li>Sub Total = 14.9</li>
+<li>Shipping (not counted for Tax) 4.5</li>
+<li>Discount - 1.49</li>
+<li>Tax at 17.5% 2.00</li>
+<li>Total 17.9</li></ul>
+The important thing is that Tax has already been factored into the price of 14.0 minus 1.49, so the 2.00 Tax is
+the portion of 13.41 which is Tax.  To calculate in reverse do this:  13.41 divided by 117.5 = 1.997 (rounded up it becomes 2.0)</p>
+<p>&nbsp;</p>
+<p>If Discount is percentage based but with Display Tax set to False on your site, and Include Tax set to False for Discount Coupons then 
+another product would calculate like this:</p>
+<p>&nbsp;</p>
+<p><ul><li>Sub Total = 41.7</li>
+<li>Shipping (not Taxed) 6.5</li>
+<li>Discount Coupon - 4.17</li>
+<li>Tax = 7.3</li>
+<li>Total = 51.33</li></ul</p>
+To calculate in reverse, do this: 41.7 times 0.175 = 7.2975 (rounded up becomes 7.3)
+<p>&nbsp;</p>
+<p><u>If Discount Coupon is flat rate</u></p>
+<p>If it's flat rate then the Discount Coupon is deducted from the Sub Total less Tax.  The portion which is Tax is 
+calculated like this:</p>
+<p><ul><li>Sub Total (incl. Tax) = 49.00</li>
+<li>Shipping (not taxed) = 6.5</li>
+<li>Discount Coupon = 10.00</li>
+<li>Portion which is Tax = 5.55</li>
+<li>Total = 45.5</li></ul></p>
+<p>Using the same product if Display Tax is set to False on your site, and Include Tax is set to False for 
+calculation of Discount Coupons then it works out like this:</p>
+<p><ul><li>Sub Total (not including Tax) = 41.70</li>
+<li>Shipping (not taxed) = 6.5</li>
+<li>Discount Coupon = 10.00</li>
+<li>Portion which is Tax now rises to 7.3</li>
+<li>Total remains the same at 45.5</li></ul></p>
+<p>&nbsp;</p>
+<h2>Coupon with Free Shipping</h2>
+<p>If you use a coupon to provide Free Shipping that's all it does, and ticking the box for Free Shipping on 
+a coupon will override any percentage or flat rate discount you try to apply.</p>
+<p>The portion which is Tax is based on the Sub Total less Tax - even when Include Tax is set to True in 
+Discount Coupons - true or false it makes no difference.</p>
+<p>&nbsp;</p>
+<p><strong>If by now you have realised that Tax calculations can be complex - then you are correct!</strong></p>
+<p>&nbsp;</p>
+<h2>Gift Vouchers</h2>
+<h3>Include Shipping:</h3>
+<p>Set to true to include shipping in the amount that the Gift Voucher is used to pay for during checkout.</p>
+
+<h3>Include Tax:</h3>
+<p>Set to true to include tax in the amount that the Gift Voucher is used to pay for during checkout.</p>
+
+<h3>Recalculate Tax:</h3>
+<p>The decision as to whether to recalculate tax depends on the Tax laws in the shop owners country. In most cases this should be left set at none. If you do need to re-calculate the tax element after deduction of the Gift Voucher amount, there are two strategies available:
+
+<h3>Standard</h3>
+<p>This simply recalculates the tax on any taxable elements after deduction of the Gift Voucher amount. For example. If the cart contains $100 of goods which are liable to tax at 10% then before the Gift Voucher is applied then the checkout values will look like this:</p>
+	<ul>
+		<li>sub-total = 100.00</li>
+		<li>tax = 10.00</li>
+		<li>total = 110.00</li>
+	</ul>
+<p>If the Gift Voucher is worth $10 then with standard tax re-calculation the checkout values will look like this.</p>
+	<ul>
+		<li>sub-total = 100.00</li>
+		<li>Gift Voucher = 10.00</li>
+		<li>tax = 9.00</li>
+		<li>total = 99.00</li>
+	</ul>
+
+<h3>Credit Note</h3>
+<p>This recalculates the tax by considering the Gift Voucher amount as a Credit Note. If the Gift Voucher is worth $10 and the Tax Class (see below) assigned to the Gift Voucher gives a tax rate of 10% then the Gift Voucher is assumed to contain a tax element of $0.91 (10/110*10)This would give checkout values as follows:</p>
+	<ul>
+		<li>sub-total = 100.00</li>
+		<li>Gift Voucher = 10.00</li>
+		<li>tax = 9.09 (10-0.91)</li>
+		<li>total = 99.09</li>
+	</ul>
+
+<h3>Tax Class:</h3>
+<p>This is used to assign a tax class that is used when using the Credit Note tax recalculation method.</p>
+
+<h3>Credit including Tax:</h3>
+<p>The Gift Voucher is created just like any other product in the store. Like any other product it can have a tax class assigned to it. Consider this situation:</p>
+<p>In your country you must apply tax to Gift Voucher purchases at a rate of 10%. When you created the Gift Voucher product you assigned a tax class to accomplish this. The Gift Voucher price was set at $10.00 so at checkout the customer will be charged $11.00. Now how much should go into the customers Gift Voucher account? If this option is set to true then they will get $11.00 in their GV account. If set to false they will get $10.00 in their Gift Voucher account.</p>
+<h2>How does the Gift Voucher system work?</h2>
+<p>Someone buys a Gift Voucher, Order Confirmation emails get sent out, and the Gift Voucher is placed in a queue to be released by yourself once payment is confirmed.</p>
+<p>You release the Gift Voucher and the customer gets an email confirming its release.</p>
+<p>They can then come to your site, Login, and send the Gift Voucher to someone else.</p>
+<p>Once logged in they can send the Gift Voucher from the Shopping Cart box, or from their Account.</p>
+
+<p>All Gift Vouchers purchased have to be 'Released' by the site owner. Only then will they become available for the customer to use or send on to someone else</p>
+<p>If someone purchases a Gift Voucher but fails to follow up with payment (if Pay by Cheque is enabled) then you now have the ability to delete that Gift Voucher from the queue in the osC Administration Panel. The 'Delete' button works differently to the 'Release' button:</p>
+<p>Pressing the 'Release' button brings up a page asking for Confirmation, while pressing the Delete button deletes the Queued Voucher immediately!</p>
+
+<h2>Gift Vouchers and the Pay Pal IPN Module</h2>
+<p>The Pay Pal IPN Module must be set to work in Aggregate mode in order for the Pay Pal IPN Module to work with Gift Vouchers and Discount Coupons</p>
+
+<h2>Addendum</h2>
+<p>This version of Credit Class and Gift Vouchers was originally written by the team at TerraNetwork and was made available to the osCommerce Community.  Over the years well meaning contributors have applied all sorts of unecessary fixes which actually broke the module and it resulted in various versions being created, none of which really worked perfectly.</p>
+
+
+<h2>Support</h2>
+
+<p><b>If we have installed this module for you and you require support</b>, then you can contact us via e-mail at: <a href="mailto:melanie@webwolf.co.za?subject=CCGV Support Request">melanie@webwolf.co.za</a></p>
+<p>Or visit our website for our full contact details: <a href="http://webwolf.co.za">http://webwolf.co.za</a></p>
+</div>
+
+</body>
+</html>

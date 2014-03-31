@@ -1,0 +1,673 @@
+<html>
+	<head>
+		<title></title>
+		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,300,700' rel='stylesheet' type='text/css'>
+		<style type="text/css">body {margin: 40px 40px; font-family:"PT Sans"; font-size: 16px}</style>
+	</head>
+	<body>
+		<p>
+			<h1 align="center">Install Instructions &amp; Guidelines</h1>
+		</p>
+		<p align="left">
+			This version of CCGV is being provided entirely separate from the long list of CCGV versions available via Contributions
+		</p>
+		<p align="left">
+			on the osCommerce website.&nbsp; It is now described as Credit Class, Gift Vouchers and Discount Coupons and harks back to earlier versions of the
+		</p>
+		<p align="left">
+			CCGV contribution - and has been updated to work with <b>OSCOMMERCE 2.3.3.4</b>
+		</p>
+		<p align="left">
+			(a).&nbsp; Security fixes
+		</p>
+		<p align="left">
+			(b).&nbsp; Ability to delete queued Gift Vouchers from within osCommerce admin
+		</p>
+		<p align="left">
+			(c).&nbsp; Ability to view Gift Voucher balance in My Account, and send Gift Voucher from there
+		</p>
+		<p align="left">
+			(d).&nbsp; All Gift Vouchers are now queued for release (not optional), for security reasons
+		</p>
+		<p align="left">
+			&nbsp;
+		</p>
+		<p align="left">
+			Why provide this version?&nbsp; For the following reasons:
+		</p>
+		<p align="left">
+			(1).&nbsp; Many people are having trouble getting the later versions to work on their modified websites.
+		</p>
+		<p align="left">
+			(2).&nbsp; There is now no Contribution Support thread for the other versions.
+		</p>
+		<p align="left">
+			(3).&nbsp; There are no manual install instructions to allow people to install later versions on modified osCommerce websites
+		</p>
+		<p align="left">
+			(4).&nbsp; Many people are confused as to which version, with which bug fixes/patches, they should install.
+		</p>
+		<p align="left">
+			(5)&nbsp;&nbsp; <b>This version is for install on osCommerce 2.3.3.4</b>
+		</p>
+		<p align="left">
+			(6)&nbsp;&nbsp; If you use an earlier version of osCommerce and it <b>has been modified</b> then please update your site
+		</p>
+		<p align="left">
+			<u><b>Two ways of installing CCGV(trad)</b></u>
+		</p>
+		<p align="left">
+			(1).&nbsp; If your store <b>has not been modified</b> with other contributions then install the complete file set enclosed with this contribution.
+		</p>
+		<p align="left">
+			(2)&nbsp; Run the ccgv.sql file into your database via phpMyAdmin - <b>this is not optional!</b>
+		</p>
+		<p align="left">
+			&nbsp;
+		</p>
+		<p align="left">
+			(3).&nbsp; If your store <b>has been modified</b> with other contributions then follow the manual install instructions below.
+		</p>
+		<p align="left">
+			(4).&nbsp; Run the ccgv.sql file into your database via phpMyAdmin - <b>this is not optional!</b>
+		</p>
+		<p align="left">
+			&nbsp;
+		</p>
+		<p align="left">
+			(5).&nbsp; For those of you who have never installed an sql file, do the following:
+		</p>
+		<p align="left">
+			(a).&nbsp; Backup your existing database using the Backup Tool in your osCommerce admin panel.
+		</p>
+		<p align="left">
+			(b).&nbsp; Access your database via phpMyAdmin
+		</p>
+		<p align="left">
+			(c).&nbsp; Click on the SQL tab, and then use the Browse box to locate the ccgv.sql file on your own computer
+		</p>
+		<p align="left">
+			(d)&nbsp; Click the 'Go' button.&nbsp; That should be it, but if you have problems then use the Restore function to restore your database from the backup you took.
+		</p>
+		<p align="left">
+			&nbsp;
+		</p>
+		<p align="center">
+			<u><b>Manual Install</b></u>
+		</p>
+		<p align="left">
+			<u><b>List of new files (just install)</b></u>
+		</p>
+		<p align="left">
+			If your site is not in a folder but is in the root of your domain then ignore the 'catalog/' pathway.
+		</p>
+		<p>
+			01) catalog/add_checkout_success.php (NEW)
+		</p>
+		<p>
+			02) catalog/gv_faq.php (NEW)
+		</p>
+		<p>
+			03) catalog/gv_redeem.php (NEW)
+		</p>
+		<p>
+			05) catalog/gv_send.php (NEW)
+		</p>
+		<p>
+			06) <span>catalog/images/gv_100.gif (NEW)</span>
+		</p>
+		<p>
+			07) catalog/images/gv_50.gif (NEW)
+		</p>
+		<p>
+			08) catalog/images/gv_25.gif (NEW)
+		</p>
+		<p>
+			09) catalog/includes/languages/add_ccgvdc_english.php (NEW)
+		</p>
+		<p>
+			12) catalog/includes/languages/english/images/buttons/button_confirm.gif (NEW)
+		</p>
+		<p>
+			13) catalog/includes/languages/english/images/buttons/button_redeem.gif (NEW)
+		</p>
+		<p>
+			14) catalog/includes/languages/english/images/buttons/button_send.gif (NEW)
+		</p>
+		<p>
+			21) catalog/includes/languages/english/modules/order_total/ot_gv.php (NEW)
+		</p>
+		<p>
+			22) catalog/includes/languages/english/modules/order_total/ot_coupon.php (NEW)
+		</p>
+		<p>
+			27) catalog/includes/languages/english/gv_send.php (NEW)
+		</p>
+		<p>
+			28) catalog/includes/languages/english/gv_faq.php (NEW)
+		</p>
+		<p>
+			28) catalog/includes/languages/english/gv_redeem.php (NEW)
+		</p>
+		<p>
+			38) catalog/includes/modules/order_total/ot_gv.php (NEW)
+		</p>
+		<p>
+			39) catalog/includes/modules/order_total/ot_coupon.php (NEW)
+		</p>
+		<p>
+			40) catalog/includes/add_ccgvdc_application_top.php (NEW)
+		</p>
+		<p>
+			41) admin/coupon_admin.php (NEW)
+		</p>
+		<p>
+			42) admin/gv_mail.php (NEW)
+		</p>
+		<p>
+			43) admin/gv_queue.php (NEW)
+		</p>
+		<p>
+			44) admin/gv_sent.php (NEW)
+		</p>
+		<p>
+			45) admin/listcategories.php (NEW)
+		</p>
+		<p>
+			46) admin/validcategories.php (NEW)
+		</p>
+		<p>
+			47) admin/listproducts.php (NEW)
+		</p>
+		<p>
+			48) admin/validproducts.php (NEW)
+		</p>
+		<p>
+			50) admin/includes/add_ccgvdc_application_top.php (NEW)
+		</p>
+		<p>
+			51) admin/includes/boxes/gv_admin.php (NEW)
+		</p>
+		<p>
+			52) admin/includes/languages/add_ccgvdc_english.php (NEW)
+		</p>
+		<p>
+			55) admin/includes/languages/english/images/buttons/button_confirm_red.gif (NEW)
+		</p>
+		<p>
+			56) admin/includes/languages/english/images/buttons/button_release.gif (NEW)
+		</p>
+		<p>
+			57) admin/includes/languages/english/images/buttons/button_report.gif (NEW)
+		</p>
+		<p>
+			58) admin/includes/languages/english/images/buttons/button_delete_now.gif (NEW)
+		</p>
+		<p>
+			62) admin/includes/languages/english/images/buttons/button_delete_now.gif (NEW)
+		</p>
+		<p>
+			66) admin/includes/languages/english/images/buttons/button_delete_now.gif (NEW)
+		</p>
+		<p>
+			67) admin/includes/languages/english/coupon_admin.php (NEW)
+		</p>
+		<p>
+			68) admin/includes/languages/english/gv_queue.php (NEW)
+		</p>
+		<p>
+			69) admin/includes/languages/english/gv_mail.php (NEW)
+		</p>
+		<p>
+			70) admin/includes/languages/english/gv_sent.php (NEW)
+		</p>
+		<p>
+			<u><b>List of files to be edited</b></u>
+		</p>
+		<p>
+			(a).&nbsp; For longer edits look for references to <b>CCGV</b> within the files provided
+		</p>
+		<p>
+			79) catalog/shopping_cart.php
+		</p>		
+		<p>
+			79) catalog/checkout_confirmation.php
+		</p>
+		<p>
+			80) catalog/checkout_payment.php
+		</p>
+		<p>
+			81) catalog/checkout_process.php
+		</p>
+		<p>
+			82) catalog/checkout_shipping.php
+		</p>
+		<p>
+			83) catalog/checkout_success.php
+		</p>
+		<p>
+			84) catalog/create_account.php
+		</p>
+		<p>
+			84) catalog/account.php
+		</p>		
+		<p>
+			85) catalog/logoff.php
+		</p>
+		<p>
+			86) catalog/includes/modules/boxes/bm_information.php
+		</p>
+		<p>
+			87) catalog/includes/modules/boxes/bm_shopping_cart.php
+		</p>
+		<p>
+			88) catalog/includes/classes/order_total.php
+		</p>
+		<p>
+			89) catalog/includes/classes/payment.php
+		</p>
+		<p>
+			90) catalog/includes/classes/shopping_cart.php
+		</p>
+		<p>
+			90) catalog/includes/classes/order.php
+		</p>		
+		<p>
+			91) catalog/includes/languages/english.php (EDIT)<br />
+			Add the following line to the end of the file just before the closing ?&gt; tag<br />
+			require(DIR_WS_LANGUAGES . 'add_ccgvdc_english.php');&nbsp; // CCGV
+		</p>
+		<p>
+			94) catalog/includes/languages/english/create_account.php
+		</p>
+		<p>
+			97) catalog/includes/application_top.php (EDIT)<br />
+			Add the following line to the end of the file just before the closing ?&gt; tag<br />
+			require(DIR_WS_INCLUDES . 'add_ccgvdc_application_top.php');&nbsp; // CCGV
+		</p>
+		<p>
+			98) admin/includes/application_top.php (EDIT)<br />
+			Add the following line to the end of the file just before the closing ?&gt; tag<br />
+			require(DIR_WS_INCLUDES . 'add_ccgvdc_application_top.php');&nbsp; // CCGV
+		</p>
+		<p>
+			99) admin/includes/column_left.php (EDIT)<br />
+			Add the following line to the end of the file just before the closing ?&gt; tag<br />
+			require(DIR_WS_BOXES . 'gv_admin.php');&nbsp; // CCGV
+		</p>
+		<p>
+			100) admin/includes/languages/english.php (EDIT)<br />
+			Add the following line to the end of the file just before the closing ?&gt; tag<br />
+			require(DIR_WS_LANGUAGES . 'add_ccgvdc_english.php');&nbsp; // CCGV
+		</p>
+		<p>
+			The files listed below for editing are for adding the Gift Voucher Balance
+		</p>
+		<p>
+			and Send Gift Voucher link to the Customers Account page.&nbsp; If you don't
+		</p>
+		<p>
+			want this feature then you can just leave out&nbsp; these edits.
+		</p>
+		<p>
+			103) catalog/account.php
+		</p>
+		<p>
+			104) catalog/includes/languages/english/account.php
+		</p>
+		<p>
+			-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		</p><big>Creating and Enabling the Gift Vouchers and Discount Coupons.</big>
+		<p>
+			If you have installed all the files and edited the files that needed to be edited and if you will follow these first few instructions I think you will have a fairly easy time.&nbsp;
+		</p>
+		<p>
+			<b>Creating a Gift Voucher.</b>
+		</p>
+		<p>
+			Creating a gift voucher for a customer to buy is the same as creating a new product with the exception that the gift vouchers Model Number must start with the word GIFT in upper case. It can be GIFT_25 or GIFT25 or whatever you would like to use. as the suffix to the word. But MUST START with the word GIFT You can create gift vouchers in any denomination. Gift certificate images have been provide in the catalog\images directory in denominations of 25$, 50$ and 100$ values.&nbsp;
+		</p>
+		<p>
+			You can also create gift vouchers by sending them to your customers via the admin-&gt;Vouchers/Coupons-&gt;Mail Gift Voucher selection within the admin. To use this to send a voucher to a customer use the drop down customer list. To send to a single customer or future customer you can put their email in the Email To: text box. Do not use both the customer dropdown list and the Email To: text box or the customer will get 2 gift vouchers.
+		</p>
+		<p>
+			<b>Gift vouchers are a virtual product. In this regard they do not require shipping charges to be added to them. To avoid the shipping charge on gift vouchers set the weight of the gift voucher to 0 when creating the product and enable downloads by setting to True the value in admin-&gt;configuration-&gt;downloads-&gt;enable download .&nbsp; BE AWARE!&nbsp; Once Enable Downloads is set to True all of your non-virtual products MUST have a weight attached to them in osCommerce Admin --&gt; Catalog.&nbsp; If you don't do this then EVERYONE will get Free Shipping on all items in your store!!!&nbsp; You have been warned!!!</b>
+		</p>
+		<p>
+			<b>If you have already added a large number of non-virtual products to your store and not given them a weight then you can do so quite easily by accessing your database via phpMyAdmin, clicking on the SQL tab, and running the following sql query in the query box.</b>
+		</p>
+		<p>
+			<b>UPDATE products SET products_weight='1.00';</b>
+		</p>
+		<p>
+			<b>This will give all products a weight of 1.&nbsp; If you already added Gift Vouchers as products then you'll need to go back to them and reset their weight to zero.</b>
+		</p>
+		<p>
+			<b>Creating Discount Coupons:</b>
+		</p>
+		<p>
+			Creating a discount coupon is done through the admin-&gt;Vouchers/Coupons-&gt;Coupon Admin This selection allows you to create/insert, edit, email and delete a coupon. Coupons can be created in fixed or percentage amounts, for a single product, multiple products, a single category, multiple categories or the complete inventory. A note on product discounts: product discounts (which includes categories) are just that product discounts. Though you can set the modules-&gt;order total -&gt; discount coupon to do shipping, tax, etc... this type of coupon will not figure the percentages of shipping tax. Though it will discount shipping it isn't a true discount in that it doesn't try to determine the products value in shipping etc.&nbsp;
+		</p>
+		<p>
+			<b>Enabling Gift Vouchers and Discount Coupons</b>
+		</p>
+		<p>
+			To enable the Gift Voucher, go to your admin-&gt;modules-&gt;order_total-&gt;Gift Vouchers and choose to install it. On a default system there should be a button with a green cross and the words install. Click that.&nbsp;
+		</p>
+		<p>
+			To enable the Discount Coupon, go to your admin-&gt;modules-&gt;order_total-&gt;Discount Coupons and choose to install it. On a default system there should be a button with a green cross and the words install. Click that.&nbsp;
+		</p>
+		<p>
+			<br />
+			The default settings for the Discount Coupons are as follows:
+		</p>
+		<table cellspacing="0" cellpadding="0" width="26%" border="0">
+			<tbody>
+				<tr>
+					<td valign="top" width="25%">
+						<table cellspacing="0" cellpadding="2" width="100%" border="1">
+							<tbody>
+								<tr>
+									<td class="infoBoxContent">
+										Discount Coupon
+									</td>
+								</tr>
+								<tr>
+									<td class="infoBoxContent">
+										<b>Display Total</b><br />
+										true<br />
+										<b>Sort Order</b><br />
+										9<br />
+										<b>Include Shipping</b><br />
+										true<br />
+										<b>Include Tax</b><br />
+										true<br />
+										<b>Re-calculate Tax</b><br />
+										None<br />
+										<b>Tax Class</b><br />
+										--none--<br />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>
+			The default settings for the Gift Voucher is as follows:
+		</p>
+		<table cellspacing="0" cellpadding="2" width="227" border="1">
+			<tbody>
+				<tr>
+					<td class="infoBoxContent" width="221">
+						Gift Vouchers
+					</td>
+				</tr>
+				<tr>
+					<td class="infoBoxContent" width="221">
+						<b>Display Total</b><br />
+						true<br />
+						<b>Sort Order</b><br />
+						740<br />
+						<b>Queue Purchases</b><br />
+						true<br />
+						<b>Include Shipping</b><br />
+						true<br />
+						<b>Include Tax</b><br />
+						true<br />
+						<b>Re-calculate Tax</b><br />
+						None<br />
+						<b>Tax Class</b><br />
+						--none--<br />
+						<b>Credit including Tax</b><br />
+						false
+					</td>
+				</tr>
+			</tbody>
+		</table><!-- body_eof //-->
+		<!-- footer //-->
+		<p>
+			Before we start playing around with all the sort orders and other settings let's just get it running now.
+		</p>
+		<p>
+			<b>Welcome Message Gift Voucher and Discount Coupon</b>
+		</p>
+		<p>
+			There has been some changes in the way you instantiate the welcome message gift voucher and discount coupon. The default value of the new customer gift voucher and discount coupon are set so that no value or notification is sent in the welcome email.&nbsp;<br />
+			The value in the <b>admin-&gt;configuration-&gt;Welcome Gift Voucher Amount&nbsp;</b><br />
+			tells the system how much of a gift voucher you would like to send your customer that has just created an account. If you do not want to use this option set the text box to 0. <b><i>Do not leave blank</i>.&nbsp;</b><br />
+			To change the discount coupon that you send to your customer when creating a new account edit the&nbsp;<br />
+			<b>admin-&gt;configuration-&gt;Welcome Discount Coupon Code:</b><br />
+			and place the coupon code that you would like to use in this textbox. Note: Previous versions of the Discount Coupon used the coupon_id value from the database. <b>This version uses the coupon code that is made when you create the Discount Coupon.</b>
+		</p>
+		<p>
+			&nbsp;
+		</p>
+		<p>
+			<b>Explanations of Gift Voucher Configuration Parameters.</b> &nbsp;<br />
+			<i>To edit configuration parameters click on the edit button in the right hand box of admin-&gt;modules-&gt;order total-&gt;gift voucher<br /></i><br />
+			The parameters are set as follows.<br />
+			<br />
+			<b>Display Total:<br /></b>Always leave set to true.<br />
+			<br />
+			<b>Sort Order:<br /></b>This needs to be set according to how you want tax to be calculated. You will also need to change the sort order of the other order total modules.<br />
+			I would set the sort order of the order total modules as follows.<br />
+			<br />
+			No tax recalculation required.<br />
+		</p>
+		<div style="MARGIN-LEFT: 40px; FONT-FAMILY: verdana,arial,sans-serif">
+			Sub-total - Sort order = 1<br />
+			Shipping - Sort order = 2<br />
+			Tax - Sort order = 3<br />
+			Gift Voucher - Sort order = 9<br />
+			Discount Coupons - Sort Order =740<br />
+			Total - Sort Order = 900<br />
+		</div><br />
+		Tax recalculation required<br />
+		<div style="MARGIN-LEFT: 40px; FONT-FAMILY: verdana,arial,sans-serif">
+			Sub-total - Sort order = 1<br />
+			Shipping - Sort order = 2<br />
+			Gift Voucher - Sort order = 740<br />
+			Discount Coupons - Sort Order =760<br />
+			Tax - Sort order = 800<br />
+			Total - Sort Order = 900<br />
+		</div>
+		<p>
+			<span style="font-weight: bold">Include Shipping:</span><br />
+			Set to true to include shipping in the amount that the Gift Voucher is used to pay for during checkout.<br />
+			<br />
+			<span style="font-weight: bold">Include Tax:</span><br />
+			Set to true to include tax in the amount that the Gift Voucher is used to pay for during checkout.<br />
+			<br />
+			<span style="font-weight: bold">Recalculate Tax:</span><br />
+			The decision as to whether to recalculate tax depends on the Tax laws in the shop owners country. In most cases this should be left set at none. If you do need to re-calculate the tax element after deduction of the Gift Voucher amount, there are two strategies available.<br />
+			<br />
+			Standard - This simply recalculates the tax on any taxable elements after deduction of the Gift Voucher amount. For example. If the cart contains $100 of goods which are liable to tax at 10% then before the Gift Voucher is applied then the checkout values will look like this.<br />
+			<br />
+		</p>
+		<div style="MARGIN-LEFT: 40px; FONT-FAMILY: verdana,arial,sans-serif">
+			sub-total = 100.00<br />
+			tax = 10.00<br />
+			total = 110.00<br />
+		</div><br />
+		If the Gift Voucher is worth $10 then with standard tax recalculation the checkout values will look like this.<br />
+		<br />
+		<div style="MARGIN-LEFT: 40px; FONT-FAMILY: verdana,arial,sans-serif">
+			sub-total = 100.00<br />
+			Gift Voucher = 10.00<br />
+			tax = 9.00<br />
+			total = 99.00<br />
+		</div><br />
+		Credit Note - This recalculates the tax by considering the Gift Voucher amount as&nbsp; a Credit Note. If the Gift Voucher is worth $10 and the Tax Class (see below) assigned to the Gift Voucher gives a tax rate of 10% then the Gift Voucher is assumed to contain a tax element of $0.91 (10/110*10)<br />
+		<br />
+		This would give checkout values as follows<br />
+		<br />
+		<div style="MARGIN-LEFT: 40px; FONT-FAMILY: verdana,arial,sans-serif">
+			sub-total = 100.00<br />
+			Gift Voucher = 10.00<br />
+			tax = 9.09 (10-0.91)<br />
+			total = 99.09<br />
+		</div><br />
+		<br />
+		<span style="font-weight: bold">Tax Class:</span><br />
+		This is used to assign a tax class that is used when using the Credit Note tax recalculation method.<br />
+		<br />
+		<span style="font-weight: bold">Credit including Tax:</span><br />
+		<br />
+		The Gift Voucher is created just like any other product in the store. Like any other product it can have a tax class assigned to it. Consider this situation.<br />
+		In your country you must apply tax to Gift Voucher purchases at a rate of 10%. When you created the Gift Voucher product you assigned a tax class to accomplish this.&nbsp; The Gift Voucher price was set at $10.00 so at checkout the customer will be charged $11.00.<br />
+		<br />
+		Now how much should go into the customers Gift Voucher account. if this option is set to true then they will get $11.00 in their GV account. If set to false they will get $10.00 in their Gift Voucher account.<br />
+		<br />
+		<br />
+		<br />
+		<b>Explanations of Discount Coupon Configuration Parameters.</b>&nbsp;<br />
+		<i>To edit configuration parameters click on the edit button in the right hand box of admin-&gt;modules-&gt;order total-&gt;discount coupon<br /></i><br />
+		Note: enabling and configuration values are similar to Gift Vouchers.
+		<p>
+			<b>Display Total</b><br />
+			true<br />
+			<b>Sort Order</b><br />
+			9<br />
+			<b>Include Shipping</b><br />
+			true<br />
+			<b>Include Tax</b><br />
+			true<br />
+			<b>Re-calculate Tax</b><br />
+			None<br />
+			<b>Tax Class</b><br />
+			--none--
+		</p>
+		<p>
+			<b>Display Total:</b> Always leave set to true.<br />
+			<br />
+			<b>Sort Order:<br /></b>This needs to be set according to how you want tax and your discount to be calculated. You will also need to change the sort order of the other order total modules.<br />
+			I would set the sort order of the order total modules as follows.<br />
+		</p>
+		<div style="MARGIN-LEFT: 40px; FONT-FAMILY: verdana,arial,sans-serif">
+			Sub-total - Sort order = 1<br />
+			Shipping - Sort order = 2<br />
+			Tax - Sort order = 3<br />
+			Gift Voucher - Sort order = 9<br />
+			Discount Coupons - Sort Order =740<br />
+			Total - Sort Order = 900<br />
+		</div><br />
+		This allows the gift voucher to assume a greater amount of the total cost while applying the discount to the total after the gift voucher has been applied. If you have recalculate tax set to true then you should place the sort order as the following&nbsp;
+		<p>
+			&nbsp;
+		</p>
+		<div style="MARGIN-LEFT: 40px; FONT-FAMILY: verdana,arial,sans-serif">
+			Sub-total - Sort order = 1<br />
+			Shipping - Sort order = 2<br />
+			Gift Voucher - Sort order = 9<br />
+			Discount Coupons - Sort Order =740<br />
+			Tax - Sort order = 800<br />
+			Total - Sort Order = 900<br />
+		</div>note: your discount coupon has many choices for per product/category items tax is only calculated on the item not on the total tax, so if you have tax on shipping it will not be recalculated though shipping would be if shipping is set to true.
+		<p>
+			<b>Include Shipping:</b> true
+		</p>
+		<p>
+			Include shipping allows the discount coupon to be used against shipping also. If the discount coupon is used on a site wide basis the shipping tax is included in the discount if you have tax set to true else it only applies to the shipping.
+		</p>
+		<p>
+			<br />
+			<b>Include Tax:</b> true
+		</p>
+		<p>
+			Include tax allows the tax of the item to be discounted as well as the item.
+		</p>
+		<p>
+			<br />
+			<b>Re-calculate Tax</b>: None
+		</p>
+		<p>
+			recalculating tax allows the tax to be shown either with the new tax or not. note: this item needs to be in conjunction with the sort order of how you would like it to be shown and include tax.
+		</p>
+		<p>
+			<br />
+			<b>Tax Class</b> --none--
+		</p>
+		<p>
+			Determines on which tax class you would like the discount coupon to be used against.
+		</p>
+		<p>
+			<b>How does the Gift Voucher system work?</b>
+		</p>
+		<p>
+			Someone buys a Gift Voucher, Order Confirmation emails get sent out, and the Gift Voucher is placed in a queue to be released by yourself once payment is confirmed.
+		</p>
+		<p>
+			You release the Gift Voucher and the customer gets an email confirming its release.
+		</p>
+		<p>
+			They can then come to your site, Login, and send the Gift Voucher to someone else (people don't usually buy Gift Vouchers for themselves).
+		</p>
+		<p>
+			Once&nbsp; logged in they can send the Gift Voucher from the Shopping Cart box, from their Account (if you installed that mod),
+		</p>
+		<p>
+			or by following the Gift Voucher FAQ's link in the Information Box
+		</p>
+		<p>
+			----------------------------------------------------------------
+		</p>
+		<p>
+			The 'Queue Gift Vouchers' feature has been removed from the osCommerce control panel, but is set to 'True' in the database.&nbsp; Therefore all Gift Vouchers
+		</p>
+		<p>
+			purchased have to be 'Released' by the site owner.&nbsp; Only then will they become available for the customer to use or send on to someone else
+		</p>
+		<p>
+			If someone purchases a Gift Voucher but fails to follow up with payment (if Pay by Cheque is enabled) then you now have the ability to delete
+		</p>
+		<p>
+			that Gift Voucher from the queue in osCommerce admin.&nbsp; The 'Delete' button works differently to the 'Release' button.&nbsp; Pressing the 'Release'
+		</p>
+		<p>
+			button brings up a page asking for Confirmation, while <b>pressing the Delete button deletes the Queued Voucher immediately!!!</b>
+		</p>
+		<p>
+			---------------------------------------------------------------------------------------------
+		</p>
+		<p>
+			<b>Gift Vouchers and the osCommerce Pay Pal IPN Module</b>
+		</p>
+		<p>
+			They don't work well together unless you also install this contribution:
+		</p>
+		<p>
+			<a href="http://www.oscommerce.com/community/contributions,2679/category,all/search,pay+pal+ipn+tax+fix">http://www.oscommerce.com/community/contributions,2679/category,all/search,pay+pal+ipn+tax+fix</a>
+		</p>
+		<p>
+			You must set the Pay Pal IPN to work in Aggregate and not Per Item mode for this fix to work.
+		</p>
+		<p>
+			<br />
+			<br />
+			Addenda.<br />
+			<br />
+			Thanks to everyone who has contributed in whatever manner to developing this system.
+		</p>
+		<p>
+			There are far too many to name them all here, but they know who they are.
+		</p>
+		<p>
+			Please don't post requests about all the other CCGV versions - they won't be answered!
+			If I've left something out send me an email, I'm not always on the forum
+		</p>
+		<p>
+			&nbsp;
+		</p>
+		<p>
+			Melanie Shepherd
+		</p>
+		<p>
+			melanie@webwolf.co.za
+		</p>
+		<p>
+			Released under GPL
+		</p>
+		</body>
+</html>

@@ -487,4 +487,6 @@
 // initialize the message stack for output messages
   require(DIR_WS_CLASSES . 'message_stack.php');
   $messageStack = new messageStack;
+
+require(DIR_WS_INCLUDES . 'add_ccgvdc_application_top.php');  // CCGV 
 ?>

@@ -97,7 +97,11 @@
 
   <div class="contentText">
     <h3><?php echo TEXT_THANKS_FOR_SHOPPING; ?></h3>
+
+
   </div>
+
+   <?php require('add_checkout_success.php'); ?> <!-- CCGV -->
 
 <?php
   if (DOWNLOAD_ENABLED == 'true') {
